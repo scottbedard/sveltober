@@ -11,7 +11,7 @@ module.exports = {
         extensions: ['.mjs', '.js', '.svelte']
     },
     output: {
-        path: __dirname + '/public',
+        path: __dirname + '/assets',
         filename: '[name].js',
         chunkFilename: '[name].[id].js'
     },
@@ -24,9 +24,9 @@ module.exports = {
                     loader: 'svelte-loader',
                     options: {
                         emitCss: true,
-                        hotReload: true
-                    }
-                }
+                        hotReload: true,
+                    },
+                },
             },
             {
                 test: /\.css$/,
