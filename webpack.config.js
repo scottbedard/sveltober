@@ -1,7 +1,13 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
+
+function resolve(...dirs) {
+    return path.resolve(__dirname, ...dirs);
+}
 
 module.exports = {
     entry: {
@@ -11,9 +17,9 @@ module.exports = {
         extensions: ['.mjs', '.js', '.svelte']
     },
     output: {
-        path: __dirname + '/assets',
-        filename: '[name].js',
-        chunkFilename: '[name].[id].js'
+        filename: '[id].[contenthash].js',
+        path: resolve('./assets'),
+        publicPath: '/themes/sveltober/assets',
     },
     module: {
         rules: [
@@ -44,8 +50,12 @@ module.exports = {
     mode,
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].css'
-        })
+            filename: '[name].[contenthash].css',
+        }),
+        new HtmlWebpackPlugin({
+            filename: resolve('./pages/index.htm'),
+            template: resolve('./src/index.htm'),
+        }),
     ],
     devtool: prod ? false: 'source-map'
 };
