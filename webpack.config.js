@@ -1,3 +1,4 @@
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -19,7 +20,9 @@ module.exports = {
     output: {
         filename: '[id].[contenthash].js',
         path: resolve('./assets'),
-        publicPath: '/themes/sveltober/assets',
+        publicPath: prod
+            ? '/themes/sveltober/assets'
+            : 'http://localhost:8080/',
     },
     module: {
         rules: [
@@ -53,9 +56,11 @@ module.exports = {
             filename: '[name].[contenthash].css',
         }),
         new HtmlWebpackPlugin({
+            alwaysWriteToDisk: true,
             filename: resolve('./pages/index.htm'),
             template: resolve('./src/index.htm'),
         }),
+        new HtmlWebpackHarddiskPlugin(),
     ],
     devtool: prod ? false: 'source-map'
 };
