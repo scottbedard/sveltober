@@ -2629,6 +2629,12 @@ path-key@^2.0.0, path-key@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
 
+path-parser@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/path-parser/-/path-parser-4.2.0.tgz#2fbb3df2d49659a9a4cac88be7d8d5f4666814fb"
+  dependencies:
+    search-params "2.1.3"
+
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
@@ -3029,6 +3035,10 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
+search-params@2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/search-params/-/search-params-2.1.3.tgz#90b98964eaf3d0edef0f73e6e8307d1480020413"
+
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
@@ -3412,6 +3422,12 @@ svelte-loader@2.13.3:
 svelte@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.1.0.tgz#87a4b643169037f0b3d28a6b1832c28dc0a3fbc3"
+
+svero@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/svero/-/svero-0.2.4.tgz#016e1d6b32c5914e20b57bf5baa2272efa224c31"
+  dependencies:
+    path-parser "^4.2.0"
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.3"

@@ -11,6 +11,11 @@ function resolve(...dirs) {
 }
 
 module.exports = {
+    devServer: {
+        disableHostCheck: true,
+        host: 'localhost', 
+        port: 3000,
+    }, 
     entry: {
         bundle: ['./src/main.js']
     },
@@ -22,7 +27,7 @@ module.exports = {
         path: resolve('./assets'),
         publicPath: prod
             ? '/themes/sveltober/assets'
-            : 'http://localhost:8080/',
+            : 'http://localhost:3000',
     },
     module: {
         rules: [
