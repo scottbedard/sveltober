@@ -15,11 +15,10 @@
     "style-loader": "^0.23.1",
     "svelte": "^3.0.0",
     "svelte-loader": "2.13.3",
+    "svelte-routing": "^1.0.0",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
   },
-  "dependencies": {
-    "svero": "^0.2.4"
-  }
+  "dependencies": {}
 }
