@@ -2,4 +2,4 @@
 
 Cybernetically enhanced October themes.
 
-This is a work in progress, and is not ready for public use.
+> **Be aware:** This project is very much a work in progress. Things are likely to change before tagging a stable version, use with caution.
