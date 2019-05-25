@@ -1,6 +1,8 @@
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const glob = require('glob-all');
 const path = require('path');
 
 // helper function to resolve paths from this directory
@@ -8,6 +10,7 @@ const resolve = (...dirs) => path.resolve(__dirname, ...dirs);
 
 const devPort = 3000;
 const mode = process.env.NODE_ENV || 'development';
+const dev = mode === 'development';
 const prod = mode === 'production';
 const themeDir = __dirname.split(path.sep).pop();
 
@@ -38,8 +41,8 @@ module.exports = {
                     loader: 'svelte-loader',
                     options: {
                         emitCss: true,
-                        hotReload: true,
-                        hydratable: true,
+                        hotReload: dev,
+                        hydratable: false,
                     },
                 },
             },
@@ -59,9 +62,6 @@ module.exports = {
                     },
                     {
                         loader: 'postcss-loader',
-                        options: {
-                            
-                        },
                     },
                 ],
             }
@@ -78,6 +78,10 @@ module.exports = {
             template: resolve('./src/index.htm'),
         }),
         new HtmlWebpackHarddiskPlugin(),
+        new PurgecssPlugin({
+            defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+            paths: glob.sync(`./src/**/*`, { nodir: true })
+        }),
     ],
     devtool: prod ? false: 'source-map'
 };
