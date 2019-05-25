@@ -6,12 +6,12 @@
     function getProps({ location, href, isPartiallyCurrent, isCurrent }) {
         const active = href === '/' ? isCurrent : isPartiallyCurrent || isCurrent;
 
-        // The object returned here is spread on the anchor element's attributes
-        if (active) {
-            return { class: 'text-red-500' };
-        }
-
-        return {}
+        // the object returned here is spread on the anchor element's attributes
+        return {
+            class: active
+                ? 'text-red-400 hover:text-red-600'
+                : 'text-grey-400 hover:text-red-600',
+        };
     }
 </script>
 
