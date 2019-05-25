@@ -3,12 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
+// helper function to resolve paths from this directory
+const resolve = (...dirs) => path.resolve(__dirname, ...dirs);
+
+const devPort = 3000;
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
-
-function resolve(...dirs) {
-    return path.resolve(__dirname, ...dirs);
-}
+const themeDir = __dirname.split(path.sep).pop();
 
 module.exports = {
     devServer: {
@@ -26,8 +27,8 @@ module.exports = {
         filename: '[id].[contenthash].js',
         path: resolve('./assets'),
         publicPath: prod
-            ? '/themes/sveltober/assets'
-            : 'http://localhost:3000',
+            ? `/themes/${themeDir}/assets`
+            : `http://localhost:${devPort}`,
     },
     module: {
         rules: [
@@ -38,6 +39,7 @@ module.exports = {
                     options: {
                         emitCss: true,
                         hotReload: true,
+                        hydratable: true,
                     },
                 },
             },

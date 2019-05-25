@@ -2,7 +2,7 @@ url = "/:all?*"
 ==
 function onStart()
 {
-    $this['hello'] = "Hello world!";
+    // fetch any initial state here
 }
 ==
 <!DOCTYPE html>
@@ -12,6 +12,7 @@ function onStart()
         <title>Sveltober</title>
     </head>
     <body>
+        <div id="app"></div>
         <!-- built files will be automatically injected -->
     </body>
 </html>
