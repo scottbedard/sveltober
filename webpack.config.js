@@ -3,42 +3,58 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob-all');
+const merge = require('webpack-merge');
 const path = require('path');
 
-// helper function to resolve paths from this directory
-const resolve = (...dirs) => path.resolve(__dirname, ...dirs);
-
-const devPort = 3000;
+// environment variables
 const mode = process.env.NODE_ENV || 'development';
 const dev = mode === 'development';
 const prod = mode === 'production';
+
+// helper to resolve paths from this directory
+const resolve = (...dirs) => path.resolve(__dirname, ...dirs);
+
+// the port for webpack dev server
+const port = 3000;
+
+// the name of the current directory
+// this can be hard coded to match the directory name
 const themeDir = __dirname.split(path.sep).pop();
 
+// path to our output directory for static assets
 const assetsPath = resolve('./assets');
 
-const publicPath = prod
-    ? `/themes/${themeDir}/assets`
-    : `http://localhost:${devPort}`;    
+//
+// base
+//
+const base = {
+    mode,
+    output: {
+        path: assetsPath,
+        publicPath: prod
+            ? `/themes/${themeDir}/assets`
+            : `http://localhost:${port}`,
+    },
+    resolve: {
+        extensions: ['.mjs', '.js', '.svelte'],
+    },
+};
 
 //
 // client
 //
-const client = {
+const client = merge(base, {
+    devtool: dev ? 'source-map' : false,
     devServer: {
         disableHostCheck: true,
         host: 'localhost', 
         port: 3000,
-    }, 
+    },
     entry: {
         bundle: ['./src/main.js']
     },
-    resolve: {
-        extensions: ['.mjs', '.js', '.svelte']
-    },
     output: {
         filename: '[id].[contenthash].js',
-        path: assetsPath,
-        publicPath,
     },
     module: {
         rules: [
@@ -56,9 +72,8 @@ const client = {
             {
                 test: /\.css$/,
                 use: [
-                    // MiniCssExtractPlugin doesn't support HMR.
-                    // For developing, use 'style-loader' instead.
                     {
+                        // minicss doesn't work with hmr, use style-loader instead
                         loader: prod ? MiniCssExtractPlugin.loader : 'style-loader',
                     },
                     {
@@ -71,10 +86,9 @@ const client = {
                         loader: 'postcss-loader',
                     },
                 ],
-            }
-        ]
+            },
+        ],
     },
-    mode,
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
@@ -90,27 +104,15 @@ const client = {
             paths: glob.sync(`./src/**/*`, { nodir: true })
         }),
     ],
-    devtool: prod ? false: 'source-map'
-};
+});
 
 //
 // server
 //
-const server = {
+const server = merge(base, {
     entry: {
         bundle: ['./src/App.svelte']
     },
-    resolve: {
-        extensions: ['.mjs', '.js', '.svelte']
-    },
-    output: {
-        filename: 'App.js',
-        libraryExport: 'default',
-        libraryTarget: 'commonjs',
-        path: assetsPath,
-        publicPath,
-    },
-    target: 'node',
     module: {
         rules: [
             {
@@ -123,9 +125,14 @@ const server = {
                     },
                 },
             },
-        ]
+        ],
     },
-    mode,
-};
+    output: {
+        filename: 'App.js',
+        libraryExport: 'default',
+        libraryTarget: 'commonjs',
+    },
+    target: 'node',
+});
 
 module.exports = [client, server];
