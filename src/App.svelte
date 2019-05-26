@@ -6,14 +6,17 @@
     import NavLink from "./components/NavLink.svelte";
 </script>
 
-<div class="max-w-xl mx-auto p-8">
+<div class="max-w-2xl mx-auto p-8">
     <!-- header -->
-    <h1 class="font-thin mb-4 text-center text-6xl">Sveltober</h1>
+    <header class="text-center">
+        <h1 class="font-thin text-5xl">Sveltober</h1>
+        <p class="font-thin mb-4 text-gray-700">Cybernetically enhanced October themes.</p>
+    </header>
 
     <!-- router -->
     <Router>
         <!-- nav -->
-        <nav class="mb-8 text-center">
+        <nav class="border-b border-t border-gray-400 mb-4 py-4 text-center">
             <NavLink to="/">
                 <span class="px-4">Home</span>
             </NavLink>
