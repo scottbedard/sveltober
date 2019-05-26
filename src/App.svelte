@@ -1,22 +1,26 @@
 <div>
     <Router url="{url}">
         <header class="p-4">
-            <div class="text-lg">sveltober</div>
-            <p class="mb-2 text-xs">cybernetically enhanced october themes</p>
-            <div class="flex"><a
-                    class="mr-2"
+            <a
+                href="https://github.com/scottbedard/sveltober"
+                title="View repository on GitHub">
+                <div class="font-bold text-2xl">sveltober</div>
+                <p class="text-gray-800">cybernetically enhanced october themes</p>
+            </a>
+            <div class="mt-4 flex">
+                <a
+                    class="mr-4"
+                    href="https://david-dm.org/scottbedard/sveltober?type=dev"
+                    target="_blank"
+                    title="View dependency status">
+                    <img alt="View dependency status" src="https://img.shields.io/david/dev/scottbedard/sveltober.svg" />
+                </a>
+                <a
+                    class="mr-4"
                     href="https://github.com/scottbedard/sveltober"
                     target="_blank"
                     title="View MIT License on GitHub">
                     <img alt="View MIT License on GitHub" src="https://img.shields.io/badge/license-MIT-blue.svg" />
-                </a>
-                
-                <a
-                    class="text-xs hover:text-red-500"
-                    href="https://github.com/scottbedard/sveltober"
-                    target="_blank"
-                    title="View repository on GitHub">
-                    View Repository
                 </a>
             </div>
         </header>
