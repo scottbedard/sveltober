@@ -31,6 +31,6 @@ yarn build
 
 ### Server side rendering and SPA routing
 
-This theme uses server side rendering, and because of this requires a Node environment. If you're using [Laravel Homestead](https://laravel.com/docs/homestead), this should already be the case. All routes are currently pointed at our `index.htm` file, which feeds the request into Svelte to be rendered. Our client-side application then hydates the DOM, and things behave as a SPA from then on.
+This theme uses server side rendering, and because of this requires a Node environment. With [Laravel Homestead](https://laravel.com/docs/homestead) and many other environments, it is already installed for you. All routes are pointed at our `index.htm` file, which feeds the request into our Svelte application. Our client-side application then hydates the DOM, and things behave as a SPA from then on.
 
 Routing is currently being handled by [`svelte-routing`](https://github.com/EmilTholin/svelte-routing), see their readme for documentation. Out of the box, a few routes have are scaffolded for you to demonstrate the basic ideas.
