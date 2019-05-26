@@ -1,10 +1,12 @@
 url = "/:all?*"
 ==
+use Cms\Classes\Theme;
 use Symfony\Component\Process\Process;
 
 function onStart()
 {
-    $ssr = themes_path('sveltober/ssr.js');
+    $activeTheme = Theme::getActiveTheme()->getDirName();
+    $ssr = themes_path("{$activeTheme}/ssr.js");
     $url = request()->path();
     
     $cmd = new Process("node {$ssr} {$url}");
