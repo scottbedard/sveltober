@@ -7,6 +7,8 @@
 
 This project is a starting point for applications using [Svelte](https://svelte.dev) and [October CMS](https://octobercms.com). It also comes with support for [Tailwind CSS](https://tailwindcss.com), as this framework pairs beautifully with Svelte.
 
+[Click here for a live demo!](https://sveltober.scottbedard.net/)
+
 > **Notice:** This is still experimental, be careful before taking it to production. In the future, we hope to provide deployment guides for the Laravel ecosystem with Forge and Envoyer.
 
 ### Getting started
