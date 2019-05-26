@@ -3,6 +3,10 @@
     import NavLink from "../components/NavLink.svelte";
 </script>
 
+<svelte:head>
+    <title>Blog</title>
+</svelte:head>
+
 <!-- header -->
 <h2 class="text-2xl">Blog</h2>
 

@@ -13,6 +13,7 @@ function onStart()
 
     $output = json_decode($cmd->mustRun()->getOutput(), true);
     
+    $this['head'] = $output['head'];
     $this['html'] = $output['html'];
 }
 ==
@@ -20,7 +21,7 @@ function onStart()
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Sveltober</title>
+        {{ head |raw }}
     </head>
     <body>
         <div id="app">{{ html | raw }}</div>
