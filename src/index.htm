@@ -5,7 +5,7 @@ use Symfony\Component\Process\Process;
 function onStart()
 {
     $ssr = themes_path('sveltober/ssr.js');
-    $url = url()->full();
+    $url = request()->path();
     
     $cmd = new Process("node {$ssr} {$url}");
 
