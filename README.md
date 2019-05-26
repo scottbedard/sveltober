@@ -5,9 +5,9 @@
 
 ### Project status
 
-The goal of this project is to be an opinionated starting point for single page applications written with [October CMS](https://octobercms.com) and [Svelte](https://svelte.dev). Currently, your theme will be able to utilize Svelte and [Tailwind CSS](https://tailwindcss.com). Production builds will remove any unused styles, and your site footprint will be extremely small. In the future, we hope to provide testing utilities, server side rendering, and much more. [Click here for a live demo](https://sveltober.scottbedard.net).
+This project is a starting point for applications using [Svelte](https://svelte.dev) and [October CMS](https://octobercms.com). It also comes with support for [Tailwind CSS](https://tailwindcss.com), as this framework pairs beautifully with Svelte.
 
-> **Notice:** This is still in very early stages of development, expect things to change before a stable release is tagged.
+> **Notice:** This is still experimental, be careful before taking it to production. In the future, we hope to provide deployment guides for the Laravel ecosystem with Forge and Envoyer.
 
 ### Getting started
 
@@ -27,6 +27,8 @@ yarn dev
 yarn build
 ```
 
-### Routing
+### Server side rendering and SPA routing
 
-Routing is currently being handled using [`svelte-routing`](https://github.com/EmilTholin/svelte-routing), see their readme for documentation. Out of the box, a few routes have are scaffolded for you to demonstrate the basic ideas.
+This theme uses server side rendering, and because of this requires a Node environment. If you're using [Laravel Homestead](https://laravel.com/docs/homestead), this should already be the case. All routes are currently pointed at our `index.htm` file, which feeds the request into Svelte to be rendered. Our client-side application then hydates the DOM, and things behave as a SPA from then on.
+
+Routing is currently being handled by [`svelte-routing`](https://github.com/EmilTholin/svelte-routing), see their readme for documentation. Out of the box, a few routes have are scaffolded for you to demonstrate the basic ideas.
