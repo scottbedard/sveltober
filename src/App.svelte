@@ -1,39 +1,60 @@
-<script>
-    import { Router, Route } from 'svelte-routing';
-    import About from './routes/About.svelte';
-    import Blog from './routes/Blog.svelte';
-    import Home from './routes/Home.svelte';
-    import NavLink from './components/NavLink.svelte';
-    let foo = 'bar';
-
-
-    export let url = '';
-</script>
-
-<div class="max-w-2xl mx-auto p-8">
-    <!-- header -->
-    <header class="text-center">
-        <h1 class="font-thin text-5xl">Sveltober</h1>
-        <p class="font-thin mb-4 text-gray-700">Cybernetically enhanced October themes.</p>
-    </header>
-
-    <!-- router -->
+<div>
     <Router url="{url}">
-        <nav class="border-b border-t border-gray-400 mb-4 py-4 text-center">
-            <NavLink to="/">
-                <span class="px-4">Home</span>
-            </NavLink>
-            <NavLink to="about">
-                <span class="px-4">About</span>
-            </NavLink>
-            <NavLink to="blog">
-                <span class="px-4">Blog</span>
-            </NavLink>
+        <header class="p-4">
+            <div class="text-lg">sveltober</div>
+            <p class="mb-2 text-xs">cybernetically enhanced october themes</p>
+            <div class="flex"><a
+                    class="mr-2"
+                    href="https://github.com/scottbedard/sveltober"
+                    target="_blank"
+                    title="View MIT License on GitHub">
+                    <img alt="View MIT License on GitHub" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+                </a>
+                
+                <a
+                    class="text-xs hover:text-red-500"
+                    href="https://github.com/scottbedard/sveltober"
+                    target="_blank"
+                    title="View repository on GitHub">
+                    View Repository
+                </a>
+            </div>
+        </header>
+
+        <nav class="p-4">
+            <div class="font-bold text-gray-800">Navigation</div>
+            <div class="flex">
+                <NavLink to="/">
+                    <div class="pr-2">Home</div>
+                </NavLink>
+                <NavLink to="about">
+                    <div class="pr-2">About</div>
+                </NavLink>
+                <NavLink to="blog">
+                    <div>Blog</div>
+                </NavLink>
+            </div>
         </nav>
-        <div>
+
+        <div class="p-4">
             <Route path="about" component="{About}" />
             <Route path="blog" component="{Blog}" />
             <Route path="/" component="{Home}" />
         </div>
     </Router>
 </div>
+
+<script>
+// components
+import { Router, Route } from 'svelte-routing';
+import NavLink from './components/NavLink.svelte';
+
+// pages
+import About from './pages/About.svelte';
+import Blog from './pages/Blog.svelte';
+import Home from './pages/Home.svelte';
+
+// props
+// url is exposed for server side rendering
+export let url = '';
+</script>
