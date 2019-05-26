@@ -14,7 +14,16 @@ const dev = mode === 'development';
 const prod = mode === 'production';
 const themeDir = __dirname.split(path.sep).pop();
 
-module.exports = {
+const assetsPath = resolve('./assets');
+
+const publicPath = prod
+    ? `/themes/${themeDir}/assets`
+    : `http://localhost:${devPort}`;    
+
+//
+// client
+//
+const client = {
     devServer: {
         disableHostCheck: true,
         host: 'localhost', 
@@ -28,10 +37,8 @@ module.exports = {
     },
     output: {
         filename: '[id].[contenthash].js',
-        path: resolve('./assets'),
-        publicPath: prod
-            ? `/themes/${themeDir}/assets`
-            : `http://localhost:${devPort}`,
+        path: assetsPath,
+        publicPath,
     },
     module: {
         rules: [
@@ -42,7 +49,7 @@ module.exports = {
                     options: {
                         emitCss: true,
                         hotReload: dev,
-                        hydratable: false,
+                        hydratable: true,
                     },
                 },
             },
@@ -85,3 +92,40 @@ module.exports = {
     ],
     devtool: prod ? false: 'source-map'
 };
+
+//
+// server
+//
+const server = {
+    entry: {
+        bundle: ['./src/App.svelte']
+    },
+    resolve: {
+        extensions: ['.mjs', '.js', '.svelte']
+    },
+    output: {
+        filename: 'App.js',
+        libraryExport: 'default',
+        libraryTarget: 'commonjs',
+        path: assetsPath,
+        publicPath,
+    },
+    target: 'node',
+    module: {
+        rules: [
+            {
+                test: /\.svelte$/,
+                use: {
+                    loader: 'svelte-loader',
+                    options: {
+                        generate: 'ssr',
+                        css: false,
+                    },
+                },
+            },
+        ]
+    },
+    mode,
+};
+
+module.exports = [client, server];

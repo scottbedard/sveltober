@@ -1,8 +1,17 @@
 url = "/:all?*"
 ==
+use Symfony\Component\Process\Process;
+
 function onStart()
 {
-    // fetch any initial state here
+    $ssr = themes_path('sveltober/ssr.js');
+    $url = url()->full();
+    
+    $cmd = new Process("node {$ssr} {$url}");
+
+    $output = json_decode($cmd->mustRun()->getOutput(), true);
+    
+    $this['html'] = $output['html'];
 }
 ==
 <!DOCTYPE html>
@@ -11,8 +20,8 @@ function onStart()
         <meta charset="UTF-8">
         <title>Sveltober</title>
     </head>
-    <body class="bg-gray-100">
-        <div id="app"></div>
+    <body>
+        <div id="app">{{ html | raw }}</div>
         <!-- built files will be automatically injected -->
     </body>
 </html>
