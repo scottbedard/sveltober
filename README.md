@@ -19,7 +19,7 @@ The first step to creating a Sveltober theme is to clone this repository into Oc
 git clone git@github.com:scottbedard/sveltober.git
 ```
 
-Once this is done, you'll need to run a `yarn install` from that directory. After doing this, the following commands will be available.
+Once this is done, run a `yarn install` from your new theme directory. After doing this, the following commands will be available.
 
 ```bash
 # start webpack dev server
@@ -29,8 +29,14 @@ yarn dev
 yarn build
 ```
 
-### Server side rendering and SPA routing
+### Server side rendering and routing
 
-This theme uses server side rendering, and because of this requires a Node environment. With [Laravel Homestead](https://laravel.com/docs/homestead) and many other environments, it is already installed for you. All routes are pointed at our `index.htm` file, which feeds the request into our Svelte application. Our client-side application then hydates the DOM, and things behave as a SPA from then on.
+This theme uses server side rendering, and as such requires a Node environment. With [Laravel Homestead](https://laravel.com/docs/homestead), and many other environments, it should already installed for you. All routes are pointed at the compiled `index.htm`, which feeds the request into our Svelte application. Our client-side application then hydates the DOM, and things behave as a SPA from then on.
+
+If you'd like to opt-out of server side rendering, this can be achieved with the following steps.
+
+1. Remove the `server` config from `webpack.config.js`.
+2. In the `client` webpack config, set `hydratable` to `false`, and in `/src/main.js`. set `hydrate` to `false`.
+3. Delete `ssr.js`, and the `onStart` and interpolation content from `src/index.htm`.
 
 Routing is currently being handled by [`svelte-routing`](https://github.com/EmilTholin/svelte-routing), see their readme for documentation. Out of the box, a few routes have are scaffolded for you to demonstrate the basic ideas.
