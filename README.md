@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Sveltober" src="https://user-images.githubusercontent.com/7980426/58436866-47c67800-807c-11e9-804c-6a4536261353.png" />
+  <img alt="Sveltober" height="64px" src="https://user-images.githubusercontent.com/7980426/58436866-47c67800-807c-11e9-804c-6a4536261353.png" />
 </p>
 
 <p align="center">
