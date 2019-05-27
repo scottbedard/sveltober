@@ -1,7 +1,15 @@
-# sveltober
+<p align="center">
+  <img alt="Sveltober" src="https://user-images.githubusercontent.com/7980426/58436866-47c67800-807c-11e9-804c-6a4536261353.png" />
+</p>
 
-[![Dev dependencies](https://img.shields.io/david/dev/scottbedard/sveltober.svg)](https://david-dm.org/scottbedard/sveltober?type=dev)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/scottbedard/sveltober/blob/master/LICENSE)
+<p align="center">
+  <a href="https://david-dm.org/scottbedard/sveltober?type=dev">
+    <img src="https://img.shields.io/david/dev/scottbedard/sveltober.svg" />
+  </a>
+  <a href="https://github.com/scottbedard/sveltober/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
+  </a>
+</p>
 
 ### Project status
 
