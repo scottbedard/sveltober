@@ -36,7 +36,7 @@ This theme uses server side rendering, and as such requires a Node environment. 
 If you'd like to opt-out of server side rendering, this can be achieved with the following steps.
 
 1. Remove the `server` config from `webpack.config.js`.
-2. In the `client` webpack config, set `hydratable` to `false`, and in `/src/main.js`. set `hydrate` to `false`.
+2. In the `client` webpack config, set `hydratable` to `false`, and in `/src/main.js` set `hydrate` to `false`.
 3. Delete `ssr.js`, and the `onStart` and interpolation content from `src/index.htm`.
 
-Routing is currently being handled by [`svelte-routing`](https://github.com/EmilTholin/svelte-routing), see their readme for documentation. Out of the box, a few routes have are scaffolded for you to demonstrate the basic ideas.
+Routing is currently being handled by [`svelte-routing`](https://github.com/EmilTholin/svelte-routing), see their readme for documentation. Out of the box, a few routes have are scaffolded for you to demonstrate the basic ideas. If you're using SSR, be aware that [the order of your routes matter](https://github.com/EmilTholin/svelte-routing#ssr-caveat).
