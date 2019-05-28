@@ -33,19 +33,23 @@
             <div class="font-bold text-gray-800">Navigation</div>
             <div class="flex">
                 <NavLink to="/">
-                    <div class="pr-2">Home</div>
+                    <div class="mr-4">Home</div>
                 </NavLink>
                 <NavLink to="about">
-                    <div class="pr-2">About</div>
+                    <div class="mr-4">About</div>
                 </NavLink>
                 <NavLink to="blog">
-                    <div>Blog</div>
+                    <div class="mr-4">Blog</div>
+                </NavLink>
+                <NavLink to="async">
+                    <div>Async</div>
                 </NavLink>
             </div>
         </nav>
 
         <div class="p-4">
             <Route path="about" component="{About}" />
+            <Route path="async" component="{Async}" />
             <Route path="blog" component="{Blog}" />
             <Route path="/" component="{Home}" />
         </div>
@@ -59,6 +63,7 @@ import NavLink from './components/NavLink.svelte';
 
 // pages
 import About from './pages/About.svelte';
+import Async from './pages/Async.svelte';
 import Blog from './pages/Blog.svelte';
 import Home from './pages/Home.svelte';
 

@@ -9,9 +9,11 @@ function onStart()
     $ssr = themes_path("{$activeTheme}/ssr.js");
     $url = request()->path();
     
-    $cmd = new Process("node {$ssr} {$url}");
+    $process = new Process("node {$ssr} {$url}");
+    $process->start();
+    $process->wait();
 
-    $output = json_decode($cmd->mustRun()->getOutput(), true);
+    $output = json_decode($process->getOutput(), true);
     
     $this['head'] = $output['head'];
     $this['html'] = $output['html'];
