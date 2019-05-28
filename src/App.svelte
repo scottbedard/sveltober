@@ -8,25 +8,9 @@
             <a
                 href="https://github.com/scottbedard/sveltober"
                 title="View repository on GitHub">
-                <div class="font-bold text-2xl">sveltober</div>
-                <p class="text-gray-800">cybernetically enhanced october themes</p>
+                <img alt="Sveltober" class="max-w-xs" src="{logo}" />
+                <p class="mt-4">Cybernetically enhanced october themes</p>
             </a>
-            <div class="mt-4 flex">
-                <a
-                    class="mr-4"
-                    href="https://david-dm.org/scottbedard/sveltober?type=dev"
-                    target="_blank"
-                    title="View dependency status">
-                    <img alt="View dependency status" src="https://img.shields.io/david/dev/scottbedard/sveltober.svg" />
-                </a>
-                <a
-                    class="mr-4"
-                    href="https://github.com/scottbedard/sveltober"
-                    target="_blank"
-                    title="View MIT License on GitHub">
-                    <img alt="View MIT License on GitHub" src="https://img.shields.io/badge/license-MIT-blue.svg" />
-                </a>
-            </div>
         </header>
 
         <nav class="p-4">
@@ -57,11 +41,11 @@
 </div>
 
 <script>
+import logo from './assets/sveltober.png';
+
 // components
 import { Router, Route } from 'svelte-routing';
 import NavLink from './components/NavLink.svelte';
-
-// pages
 import About from './pages/About.svelte';
 import Async from './pages/Async.svelte';
 import Blog from './pages/Blog.svelte';

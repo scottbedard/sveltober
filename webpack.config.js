@@ -29,11 +29,21 @@ const assetsPath = resolve('./assets');
 //
 const base = {
     mode,
+    module: {
+        rules: [
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ],
+            },
+        ],
+    },
     output: {
         path: assetsPath,
         publicPath: prod
-            ? `/themes/${themeDir}/assets`
-            : `http://localhost:${port}`,
+            ? `/themes/${themeDir}/assets/`
+            : `http://localhost:${port}/`,
     },
     resolve: {
         extensions: ['.mjs', '.js', '.svelte'],
