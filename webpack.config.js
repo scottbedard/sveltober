@@ -42,7 +42,7 @@ const base = {
     output: {
         path: assetsPath,
         publicPath: prod
-            ? `/themes/${themeDir}/assets/`
+            ? `/plugins/bedard/sveltober/assets/`
             : `http://localhost:${port}/`,
     },
     resolve: {
@@ -61,7 +61,7 @@ const client = merge(base, {
         port: 3000,
     },
     entry: {
-        bundle: ['./src/main.js']
+        bundle: ['./frontend/main.js']
     },
     output: {
         filename: '[id].[contenthash].js',
@@ -105,13 +105,13 @@ const client = merge(base, {
         }),
         new HtmlWebpackPlugin({
             alwaysWriteToDisk: true,
-            filename: resolve('./pages/index.htm'),
-            template: resolve('./src/index.htm'),
+            filename: resolve('./views/index.htm'),
+            template: resolve('./frontend/index.htm'),
         }),
         new HtmlWebpackHarddiskPlugin(),
         new PurgecssPlugin({
             defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-            paths: glob.sync(`./src/**/*`, { nodir: true })
+            paths: glob.sync(`./frontend/**/*`, { nodir: true })
         }),
     ],
 });
@@ -121,7 +121,7 @@ const client = merge(base, {
 //
 const server = merge(base, {
     entry: {
-        bundle: ['./src/App.svelte']
+        bundle: ['./frontend/App.svelte']
     },
     module: {
         rules: [

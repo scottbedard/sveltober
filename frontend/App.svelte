@@ -53,5 +53,6 @@ import Home from './pages/Home.svelte';
 
 // props
 // url is exposed for server side rendering
+export let data = {};
 export let url = '';
 </script>
