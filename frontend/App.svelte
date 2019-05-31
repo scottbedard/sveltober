@@ -42,6 +42,8 @@
 
 <script>
 import logo from './assets/sveltober.png';
+import { setContext } from 'svelte';
+import { writable } from 'svelte/store';
 
 // components
 import { Router, Route } from 'svelte-routing';
@@ -54,5 +56,11 @@ import Home from './pages/Home.svelte';
 // props
 // url is exposed for server side rendering
 export let data = {};
+export let initialState = {};
 export let url = '';
+
+// inject initial state into a store
+const store = writable({ initialState });
+
+setContext('app', store);
 </script>

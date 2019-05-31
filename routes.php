@@ -1,7 +1,14 @@
 <?php
 
-// route that fetches data
-Route::get('async', 'Bedard\Sveltober\Http\Controllers\AsyncController@index');
+$middleware = 'Bedard\Sveltober\Middleware\SveltoberMiddleware';
+$path = plugins_path('bedard/sveltober/assets/App.js');
 
-// catch-all route, for pages that don't require data
-Route::get('{any}', 'Bedard\Sveltober\Classes\SvelteController@svelte')->where('any', '.*');
+// wrap non-api routes in sveltober middleware
+Route::middleware("{$middleware}:{$path}")->group(function() {
+
+    // this route we'll use to get some async data
+    Route::get('async', 'Bedard\Sveltober\Http\Controllers\AsyncController@index');
+    
+    // this route is our catch all, and is pointed at the spa
+    Route::get('{any}', function() {})->where('any', '.*');
+});

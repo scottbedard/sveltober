@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <head>{{ head | raw }}</head>
+    <head>
+        {{ head | raw }}
+        <meta name="sveltober" content="{{ data }}" />
+    </head>
     <body>
         <div id="app">{{ html | raw }}</div>
         <!-- built files will be injected automatically -->

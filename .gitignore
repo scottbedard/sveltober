@@ -1,3 +1,5 @@
 /assets
 /views
 node_modules
+
+/vendor/

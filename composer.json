@@ -1,0 +1,7 @@
+{
+    "name": "bedard/sveltober",
+    "description": "Cybernetically enhanced October themes.",
+    "type": "october-plugin",
+    "license": "MIT",
+    "require": {}
+}

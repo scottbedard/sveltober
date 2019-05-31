@@ -1,13 +1,13 @@
 <?php namespace Bedard\Sveltober\Http\Controllers;
 
-use Bedard\Sveltober\Classes\SvelteController;
+use Illuminate\Routing\Controller;
 
-class AsyncController extends SvelteController
+class AsyncController extends Controller
 {
     public function index()
     {
-        return $this->svelte([
+        return [
             'message' => 'Hello from some asynchronous content!',
-        ]);
+        ];
     }
 }
